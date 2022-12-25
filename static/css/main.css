@@ -7,3 +7,9 @@
 .navbar {
     margin-bottom: 40px;
 }
+
+.my-alert {
+    position: fixed;
+    bottom: 0;
+    right: 15px;
+}
