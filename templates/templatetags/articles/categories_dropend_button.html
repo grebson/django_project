@@ -1,0 +1,16 @@
+<div class="dropend float-end">
+    <a class="btn btn-success dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        Categories
+    </a>
+    <ul class="dropdown-menu ms-2">
+        <li><a class="dropdown-item" href="{% url 'articles' %}">All</a></li>
+
+        {% for category in categories %}
+            <li><a class="dropdown-item" href="{% url 'category' category.id %}">{{ category }}</a></li>
+        {% endfor %}
+
+        {% if user.is_superuser %}
+            <li><a class="dropdown-item text-success" href="{% url 'create-category' %}">+</a></li>
+        {% endif %}
+    </ul>
+</div>

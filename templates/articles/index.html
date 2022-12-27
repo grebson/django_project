@@ -1,0 +1,38 @@
+{% extends 'main.html' %}
+{% load custom_tags %}
+
+{% block content %}
+
+    <div class="container">
+        <div class="col-md-10 mx-auto">
+            <div class="clearfix mb-4">
+                {% categories_dropend_button %}
+                <a class="btn btn-primary float-end me-2" href="{% url 'create-article' %}">Create Article</a>
+                <h2>Articles</h2>
+            </div>
+        </div>
+
+        {% for article in articles %}
+            <div class="col-md-10 mx-auto">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">
+                            <a href="{% url 'article' article.id %}">{{ article.title }}</a>
+                        </h4>
+                        <p class="card-text">{{ article.content }}</p>
+                    </div>
+
+                    <div class="card-footer clearfix text-muted">
+                        {% if request.user == article.user or request.user.is_superuser %}
+                            <a class="btn btn-outline-danger float-end" href="{% url 'delete-article' article.id %}">Delete</a>
+                            <a class="btn btn-outline-primary float-end me-2" href="{% url 'update-article' article.id %}">Update</a>
+                        {% else %}
+                            {{ article.user.email }}
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+{% endblock content %}

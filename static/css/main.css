@@ -4,6 +4,20 @@
     font-family: 'Roboto', sans-serif;
 }
 
+a {
+    text-decoration: none;
+}
+
+.my-app-title {
+    position: relative;
+    top: 10px;
+    left: -5px;
+}
+
+.card {
+    margin-bottom: 40px;
+}
+
 .navbar {
     margin-bottom: 40px;
 }

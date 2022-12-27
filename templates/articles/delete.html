@@ -1,0 +1,26 @@
+{% extends 'main.html' %}
+
+
+{% block content %}
+
+    <div class="container">
+        <div class="col-md-10 mx-auto">
+            <div class="card">
+                <div class="card-body text-center">
+                    <p class="card-text">
+                        Are you sure you want to delete the <mark>{{ article.title }}</mark> article?
+                    </p>
+                </div>
+                <div class="card-footer clearfix">
+                    <form method="POST">
+                        {% csrf_token %}
+
+                        <button class="btn btn-outline-danger float-end" type="submit">Delete</button>
+                        <a href="{% url 'articles' %}" class="btn btn-outline-secondary float-end me-2">Back</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}
